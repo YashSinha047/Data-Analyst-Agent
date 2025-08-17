@@ -1,19 +1,62 @@
+# Core API and Data Processing
 fastapi
 uvicorn[standard]
 python-multipart
 python-dotenv
-duckdb
-scikit-learn
-google-generativeai
 requests
-beautifulsoup4
+
+# Data Manipulation and Analysis
 pandas
+numpy
+duckdb
+sqlalchemy
+ijson
+openpyxl
+xlrd
+
+# Statistical Analysis
+scikit-learn
+scipy
+statsmodels
+pingouin
+
+# Geospatial Data Processing
+geopandas
+pyproj
+shapely
+fiona
+rasterio
+contextily
+
+# Visualization
 matplotlib
 seaborn
+plotly
+folium
+bokeh
+
+# Network Analysis
+networkx
+igraph
+
+# Web Scraping and Data Extraction
+beautifulsoup4
 lxml
 html5lib
+pymupdf
+pypdf
+pdfplumber
+playwright
+
+# Machine Learning and AI
+google-generativeai
+
+# Forecasting and Time Series
+prophet
+pmdarima
+
+# Additional Utilities
+pydantic
 pyarrow
-networkx
-pydantic    
-scipy
 pillow
+tqdm
