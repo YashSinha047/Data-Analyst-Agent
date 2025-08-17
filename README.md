@@ -184,19 +184,30 @@ curl "http://localhost:8000/api/" \
 ```mermaid
 graph TD
     A[Request] --> B[Chief Strategist]
-    B --> C{Images Present?}
-    C -->|Yes| D[Image Processing]
-    C -->|No| E[Data Scouting]
+    B --> C{File Types Analysis}
+    
+    C -->|Images + Other Files| D[Image Processing]
+    C -->|Images + Other Files| E[Data Scouting]
+    C -->|Images Only| D
+    C -->|Other Files Only| E
+    
     D --> F[Analysis Planning]
-    E --> F
-    F --> G[Code Generation]
-    G --> H[Docker Execution]
-    H --> I{Success?}
-    I -->|No| J[Debug & Retry]
-    I -->|Yes| K[JSON Response]
-    J --> I
-    J -->|Max Retries| L[Fallback Response]
-    L --> K
+    E --> G{Scouting Success?}
+    G -->|No| H[Retry Data Scouting<br/>Max 1 Retry]
+    H --> I{Retry Success?}
+    I -->|No| J[Continue with Limited Context]
+    I -->|Yes| F
+    G -->|Yes| F
+    J --> F
+    
+    F --> K[Code Generation]
+    K --> L[Docker Execution]
+    L --> M{Success?}
+    M -->|No| N[Debug & Retry<br/>Max 3 Retries]
+    M -->|Yes| O[JSON Response]
+    N --> M
+    N -->|Max Retries Reached| P[Fallback Response]
+    P --> O
 ```
 
 ### Core Components
